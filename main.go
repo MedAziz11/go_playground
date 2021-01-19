@@ -29,6 +29,9 @@ type Professor struct {
 }
 
 func main() {
+
+	//NB: = is to increment a value to a variable that u already declared its type
+	// := is to increment a value to a variable that u dont know its type
 	var i int = 1
 	j := 3.15
 	var code string = string(i) //it returns a unicode a the integer
@@ -117,4 +120,79 @@ func main() {
 	pr.lastname = "mendri"
 	pr.job = "9awad"
 	fmt.Println(pr)
+
+	// If and Switch statement
+
+	if true { //condition
+		// do smmthing
+		fmt.Println("hello from if")
+	}
+
+	//if with an initiliazer
+
+	if pop, exist := class["aaa"]; exist {
+		fmt.Println(pop)
+	}
+
+	//Switch
+
+	switch 2 {
+	case 1:
+		fmt.Println("thats 1") //u can add fallthrough key word to make it go to the next test even if it get the right result
+		//fallthrough
+	case 2:
+		fmt.Println("thats 2")
+	default:
+		fmt.Println("None")
+
+	}
+
+	//Loops
+
+	for i := 0; i < 5; i++ { //like C
+		fmt.Println(i)
+	}
+
+	for i, j := 0, 5; i < 5; i, j = i+1, j-1 {
+		fmt.Println(i, j)
+	}
+
+	//Labels in Looops
+	fmt.Println("************")
+Loop:
+	for i := 1; i < 5; i++ {
+		for j := 1; j < 3; j++ {
+			// if we need it to break if i*j >3 then we use the labels
+			// because the break will only break the loop that it is in
+
+			if i*j >= 3 {
+				break Loop
+			}
+			fmt.Println(i * j)
+
+		}
+
+	}
+	//Loop with range function (the python for 🤩)
+
+	for i, v := range class {
+		fmt.Println(i, v)
+
+	}
+
+	//defer is special when u put is on a finction it will run the last thing
+	// defer uses a LIFO means the last defer function will run the first
+	// defer some_function()
+
+	//panic or Exceptions
+
+	// i = 0
+	// if i == 0 {
+	// 	panic("cant devide by zero")
+	// } else {
+	// 	fmt.Println("nthing")
+	// }
+
+	//Poiters
+
 }
