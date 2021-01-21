@@ -176,7 +176,7 @@ Loop:
 	//Loop with range function (the python for 🤩)
 
 	for i, v := range class {
-		fmt.Println(i, v)
+		fmt.Println(i, v) //i : index, v: value
 
 	}
 
@@ -195,4 +195,61 @@ Loop:
 
 	//Poiters
 
+	var x int = 42
+	var y *int //poiter to an integer
+	y = &x
+
+	fmt.Println(x, y, *y) // now y is the adress of x and *y is the value of x
+	x = 15
+	fmt.Println(x, y, *y) // now when i change y i change x  too
+
+	//when you initialize a pointer like var i *int
+	// the pointer will get the value <nil>
+
+	var ms *Person //it will point to nil
+	ms = new(Person)
+	ms.lastname = "aziz"
+
+	//Functions
+	yoyo(12)
+	fmt.Println(test(1, 2, 3, 4, 6))
+	if v, err := devide(3, 2); err != nil {
+		fmt.Println(err)
+		return
+	} else {
+		fmt.Println(v)
+	}
+	p2 := Person{
+		name:     "aziz",
+		lastname: "chagour",
+		age:      20,
+	}
+	p2.getName()
+
+}
+
+func yoyo(msg int) {
+	fmt.Println(msg, "from yoyo function")
+}
+
+func test(args ...int) int { //same as *args in python it gets a list or slice
+	sum := 0
+	for _, v := range args {
+		sum += v
+	}
+	return sum
+}
+
+// returning a response with an error
+func devide(a, b int) (int, error) {
+	if b == 0 {
+		return 0, fmt.Errorf("cannot devide by 0")
+	}
+	return a / b, nil
+}
+
+//methods
+
+func (p *Person) getName() {
+	fmt.Println(p.name)
 }
